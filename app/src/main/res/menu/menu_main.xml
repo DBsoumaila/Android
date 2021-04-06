@@ -1,0 +1,134 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="Admin"
+        android:enabled="true"
+        app:showAsAction="never"
+
+        >
+        <menu>
+            <item
+                android:id="@+id/ajouter_admin"
+                android:orderInCategory="100"
+                android:title="Ajouter"
+                />
+            <item
+                android:id="@+id/Editer_admin"
+                android:orderInCategory="100"
+                android:title="Editer"
+                />
+            <item
+                android:id="@+id/supprimer_admin"
+                android:orderInCategory="100"
+                android:title="Supp"
+                />
+
+        </menu>
+
+    </item>
+    <item
+        android:id="@+id/client_menu"
+        android:orderInCategory="100"
+        android:title="Client"
+        app:showAsAction="never"
+
+        >
+        <menu>
+            <item
+                android:id="@+id/ajouter_client"
+                android:orderInCategory="100"
+                android:title="Ajouter"
+                />
+            <item
+                android:id="@+id/Editer_client"
+                android:orderInCategory="100"
+                android:title="Editer"
+                />
+            <item
+                android:id="@+id/supprimer_client"
+                android:orderInCategory="100"
+                android:title="Supp"
+                />
+
+        </menu>
+
+    </item>
+    <item
+        android:id="@+id/travailleur_menu"
+        android:orderInCategory="100"
+        android:title="Travailleur"
+        app:showAsAction="never"
+
+        >
+        <menu>
+            <item
+                android:id="@+id/ajouter_travailleur"
+                android:orderInCategory="100"
+                android:title="Ajouter"
+                />
+            <item
+                android:id="@+id/Editer_travailleur"
+                android:orderInCategory="100"
+                android:title="Editer"
+                />
+            <item
+                android:id="@+id/supprimer_travailleur"
+                android:orderInCategory="100"
+                android:title="Supp"
+                />
+
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/menu_admin"
+        android:orderInCategory="100"
+        android:title="Menu"
+        android:icon="@drawable/ic_baseline_menu_24"
+        app:showAsAction="ifRoom"
+
+        />
+    <item
+        android:id="@+id/search_ic"
+        android:orderInCategory="100"
+        android:title="search"
+        android:icon="@drawable/ic_baseline_search_24"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/Clients"
+        android:orderInCategory="100"
+        android:title="Settings"
+        app:showAsAction="never"
+         />
+    <item
+        android:id="@+id/voir_el"
+        android:orderInCategory="100"
+        android:title="Statistiques"
+        app:showAsAction="never"
+         >
+        <menu>
+            <item
+                android:id="@+id/stat_admin"
+                android:orderInCategory="100"
+                android:title="Admin"
+                />
+            <item
+                android:id="@+id/stat_client"
+                android:orderInCategory="100"
+                android:title="Client"
+                />
+            <item
+                android:id="@+id/stat_trav"
+                android:orderInCategory="100"
+                android:title="Travailleur"
+                />
+
+        </menu>
+        </item>
+</menu>
