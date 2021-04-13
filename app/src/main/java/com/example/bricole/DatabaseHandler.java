@@ -11,7 +11,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHandler extends  SQLiteOpenHelper {
     //Déclarations
     // requests
-    public    Cursor  curseur;
+    public    Cursor  curseur ;
+    String nomAdmin,prenomAdmin;
     // DATABASE
     public static final String DATABASE_NAME= "Bricole.db";
     // TABLE
@@ -99,29 +100,44 @@ public class DatabaseHandler extends  SQLiteOpenHelper {
 
     public boolean isAuthentificated(String emailAverifier, String passwordAverifier)
     {
-        String email, password;
-        email="";
-        password="" ;
-        SQLiteDatabase db = this.getWritableDatabase();
-         curseur= db.rawQuery("select * from "+TABLE_NAME+" where Password= ? and Email= ? ",new String[]{passwordAverifier,emailAverifier});
-       // remplissage avec les données
+
+        try {
+            String AUTHENTIFICATION = "select * FROM "+TABLE_NAME+" WHERE Password= '"+passwordAverifier+"' "+"AND Email= '"+emailAverifier+"'";
+            String AUTHENTIFICATION1 = "select * FROM Admin  WHERE Password= "+passwordAverifier+" AND Email= "+emailAverifier;
+
+
+            SQLiteDatabase db = this.getWritableDatabase();
+            curseur= db.rawQuery( AUTHENTIFICATION,null);
+            //curseur= db.rawQuery("select * from Admin ",null);
+            System.out.println(AUTHENTIFICATION);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+          // on verifie s'il y'a un résultat
+
+
         if (curseur != null && curseur.moveToFirst()){
+            int indexNom, idexprenom;
+           // indexNom= curseur.getColumnIndex("Nom");
+            //idexprenom= curseur.getColumnIndex("Prenom");
+
+                System.out.println(curseur.getColumnName(0).toString()+"\n"+curseur.getColumnName(1).toString()+"\n"+curseur.getColumnName(2).toString()+"\n"+curseur.getColumnName(3).toString()+"\n"+curseur.getColumnName(4).toString()+"\n\n");
+
             do {
-                email= curseur.getString(4);
-                password= curseur.getString(3);
 
-
+                // remplissage avec les données si l'utilisateur existe
+               nomAdmin= curseur.getString(1);
+                prenomAdmin=curseur.getString(2);
+                System.out.println(curseur.getString(0).toString()+"\n"+curseur.getString(1).toString()+""+curseur.getString(2).toString()+"\n"+curseur.getString(3).toString()+"\n"+curseur.getString(4).toString()+"\n\n");
             } while (curseur.moveToNext());
-        }
-
-
-       // vérification
-        if(emailAverifier.equals(email) && passwordAverifier.equals(password))
-        {
             return  true;
-        }else
-        {
-            return false;
         }
+        else {
+            return  false;
+        }
+        // vérifications
+
+
     }
 }

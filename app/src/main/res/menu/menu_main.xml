@@ -109,25 +109,82 @@
     <item
         android:id="@+id/voir_el"
         android:orderInCategory="100"
-        android:title="Statistiques"
+        android:title="@string/statistiques"
         app:showAsAction="never"
          >
         <menu>
             <item
                 android:id="@+id/stat_admin"
                 android:orderInCategory="100"
-                android:title="Admin"
-                />
+                android:title="@string/admin"
+                >
+                <menu>
+                    <item
+                        android:id="@+id/stat_admin_barchat"
+                        android:orderInCategory="100"
+                        android:title="@string/barchart"
+                        />
+                    <item
+                        android:id="@+id/stat_admin_piechart"
+                        android:orderInCategory="100"
+                        android:title="@string/piechart"
+                        />
+                    <item
+                        android:id="@+id/stat_admin_radarchart"
+                        android:orderInCategory="100"
+                        android:title="@string/radarchart"
+                        />
+
+                </menu>
+                </item>
             <item
                 android:id="@+id/stat_client"
                 android:orderInCategory="100"
-                android:title="Client"
-                />
+                android:title="@string/client"
+                >
+                <menu>
+                    <item
+                        android:id="@+id/stat_client_barchat"
+                        android:orderInCategory="100"
+                        android:title="@string/barchart"
+                        />
+                    <item
+                        android:id="@+id/stat_client_piechart"
+                        android:orderInCategory="100"
+                        android:title="@string/piechart"
+                        />
+                    <item
+                        android:id="@+id/stat_client_radarchart"
+                        android:orderInCategory="100"
+                        android:title="@string/radarchart"
+                        />
+
+                </menu>
+            </item>
             <item
                 android:id="@+id/stat_trav"
                 android:orderInCategory="100"
-                android:title="Travailleur"
-                />
+                android:title="@string/travailleur"
+                >
+                <menu>
+                    <item
+                        android:id="@+id/stat_trav_barchat"
+                        android:orderInCategory="100"
+                        android:title="@string/barchart"
+                        />
+                    <item
+                        android:id="@+id/stat_trav_piechart"
+                        android:orderInCategory="100"
+                        android:title="@string/piechart"
+                        />
+                    <item
+                        android:id="@+id/stat_trav_radarchart"
+                        android:orderInCategory="100"
+                        android:title="@string/radarchart"
+                        />
+
+                </menu>
+            </item>
 
         </menu>
         </item>
