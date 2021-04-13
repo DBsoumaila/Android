@@ -11,5 +11,11 @@
     <string name="login_failed">"Login failed"</string>
     <string name="login">Login</string>
     <string name="username">Nom Util.</string>
-    <string name="authentification">Authentification</string>
+    <string name="authentification">Authentification Admin</string>
+    <string name="bienvenue">BIENVENUE</string>
+    <string name="cr_er_un_administrateur">Créer un Administrateur</string>
+    <string name="password">Password</string>
+    <string name="remember">remember</string>
+    <string name="enregistrer">enregistrer</string>
+    <string name="dashboard_admins">Dashboard Admins</string>
 </resources>
