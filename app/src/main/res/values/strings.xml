@@ -26,4 +26,12 @@
     <string name="client">Client</string>
     <string name="admin">Admin</string>
     <string name="statistiques">Statistiques</string>
+    <string name="invalid_name">Please Enter A Valid Name</string>
+    <string name="invalid_profession">Please Enter A valid Job</string>
+    <string name="invalid_num">Please Enter A Valid Number</string>
+    <string name="invalid_singup_email">Please Enter A Valid Email</string>
+    <string name="invalid_singup_password">Enter Six Digit Password</string>
+    <string name="invalid_confirm_password">Password does not match</string>
+    <string name="invalid_login_email">Please Enter A Valid Email</string>
+    <string name="invalid_login_password">Please Enter A Six Digit Password</string>
 </resources>
