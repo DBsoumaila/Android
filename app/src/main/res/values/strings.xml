@@ -18,4 +18,12 @@
     <string name="remember">remember</string>
     <string name="enregistrer">enregistrer</string>
     <string name="dashboard_admins">Dashboard Admins</string>
+    <string name="monmail_gmail_com">monmail@gmail.com</string>
+    <string name="radarchart">RadarChart</string>
+    <string name="piechart">PieChart</string>
+    <string name="barchart">BarChart</string>
+    <string name="travailleur">Travailleur</string>
+    <string name="client">Client</string>
+    <string name="admin">Admin</string>
+    <string name="statistiques">Statistiques</string>
 </resources>

@@ -1,14 +1,18 @@
 package com.example.bricole;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +21,28 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     AdminAdapter adminAdapter;
+    DatabaseHandler mydatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // creation de l'instance de la base de données
+        mydatabase = new DatabaseHandler(this);
+
+
         recyclerView= (RecyclerView) findViewById(R.id.recycler_dashboard);
         setRecyclerView();
+
+
+        // appel de l'enregistrement s il ya un click
+       // addData();
+        //viewAllUsers();
+       // updateUser();
+       // deleteUser();
+       // gotoMenu();
+
+
     }
 
     @Override
@@ -45,14 +64,44 @@ public class MainActivity extends AppCompatActivity {
             case R.id.ajouter_admin:
                 creerAdmin();
                 return true;
-           /*
-            case R.id.ajouter_admin:
-                //showHelp();
-                return true; */
+            case R.id.stat_admin_barchat:
+               //allData();
+                afficherBarChartAdmin();
+                return true;
+            case R.id.stat_admin_piechart:
+               afficherPieChartAdmin();
+
+                return true;
+
+            case R.id.stat_admin_radarchart:
+               afficherRadrChartAdmin();
+                return true;
+
             default:
                 // the action is not handle
                 return super.onOptionsItemSelected(item);
         }
+
+    }
+
+
+    // les charts
+    public  void  afficherBarChartAdmin()
+    {
+        // il faut envoyer les données admin a afficher ici, venant de la base Admin
+        startActivity(new Intent(getApplicationContext(),BarChartActivity.class));
+
+    }
+    public  void  afficherPieChartAdmin()
+    {
+        // il faut envoyer les données admin a afficher ici, venant de la base Admin
+        startActivity(new Intent(getApplicationContext(),PieChartActivity.class));
+
+    }
+    public  void  afficherRadrChartAdmin()
+    {
+        // il faut envoyer les données admin a afficher ici, venant de la base Admin
+        startActivity(new Intent(getApplicationContext(),RadarChartActivity.class));
 
     }
 
@@ -65,7 +114,9 @@ public class MainActivity extends AppCompatActivity {
     public void setRecyclerView()
     {
         // true, if the adapter changes can't affect the recycler view size
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
+        recyclerView.setClickable(true);
+        recyclerView.setHorizontalScrollBarEnabled(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adminAdapter= new AdminAdapter(this,getList());
         recyclerView.setAdapter(adminAdapter);
@@ -73,21 +124,118 @@ public class MainActivity extends AppCompatActivity {
 
     private List<AdminModel> getList()
     {
+        Cursor result= mydatabase.getAllUsers();
         List<AdminModel> maliste= new ArrayList<AdminModel>();
-        // filling data into the tables
-        maliste.add(new AdminModel(1,"Dabanguibe","Soumaila","1234retzz","dab@gmail.com"));
-        maliste.add(new AdminModel(2,"Toto","Tatio","1234","toto@gmail.com"));
-        maliste.add(new AdminModel(3,"Madamee","Bovary","Bovaryroad","bovaryR@gmail.com"));
-        maliste.add(new AdminModel(4,"Fatou","Fatima","zara","zara@gmail.com"));
-        maliste.add(new AdminModel(5,"PotoTz","Patrick","tr567","patrick@gmail.com"));
-        maliste.add(new AdminModel(6,"Hope","Health","wealth","help@gmail.com"));
-        maliste.add(new AdminModel(7,"Yassine","Ptro","tzoi43537","yas@gmail.com"));
-        maliste.add(new AdminModel(8,"Bouhandira","Hafsa","hafsa453738bou","hafsab@gmail.com"));
-        maliste.add(new AdminModel(9,"Boussouab","hiba","hibatoppoz","bhiba@gmail.com"));
-        maliste.add(new AdminModel(10,"Amrani","Yassine","amraner36390ysa08u","aYassine789@gmail.com"));
 
+        if(result.getCount()==0)
+        {
+            showMessage("Erreur ","Impossible de voir les utilisateurs. Aucun user trouvé!");
+        }else{
+           int idRecu;
+           String nom, prenoom, pass, emailAdr;
+            while (result.moveToNext())
+            {
+                idRecu=Integer.parseInt(result.getString(0));
+                nom=result.getString(1);
+                prenoom=result.getString(2);
+                pass=result.getString(3);
+                emailAdr=result.getString(4);
+                // Ajout des valeurs de la ligne dans la liste
+                maliste.add(new AdminModel(idRecu,nom,prenoom,pass,emailAdr));
+
+
+            }
+
+        }
 
 
         return  maliste;
     }
+
+    public void addData()
+    {
+        //enregister.setOnClickListener(clicPourEnregistrer);
+    }
+
+    public  void   allData()
+    {
+        Cursor result= mydatabase.getAllUsers();
+
+        if(result.getCount()==0)
+        {
+            showMessage("Erreur ","Impossible de voir les utilisateurs. Aucun user trouvé!");
+        }else{
+            StringBuffer buffer= new StringBuffer();
+            while (result.moveToNext())
+            {
+                buffer.append("ID:"+result.getString(0)+"\n");
+                buffer.append("Nom:"+result.getString(1)+"\n");
+                buffer.append("Prénom:"+result.getString(2)+"\n");
+                buffer.append("Password:"+result.getString(3)+"\n");
+                buffer.append("Email:"+result.getString(4)+"\n \n");
+            }
+            showMessage("DATA", buffer.toString());
+        }
+    }
+
+    public void updateUser()
+    {
+       // updatebtn.setOnClickListener(updateClick);
+    }
+    public void deleteUser()
+    {
+        //deletebtn.setOnClickListener(deleteClick);
+    }
+
+    public void gotoMenu()
+    {
+       // menubtn.setOnClickListener(menuclick);
+    }
+
+
+    // definition des listeners
+    View.OnClickListener deleteClick= new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
+
+    View.OnClickListener menuclick= new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //transition sur le menu principal
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+    };
+
+
+    View.OnClickListener updateClick= new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            int deletedRows= mydatabase.delete("1");
+            if(deletedRows>0)
+            {
+                Toast.makeText(MainActivity.this, "Bien supprimé",Toast.LENGTH_LONG).show();
+
+            }else
+            {
+                Toast.makeText(MainActivity.this, "Non supprimé",Toast.LENGTH_LONG).show();
+
+            }
+        }
+    };
+
+
+    public  void  showMessage( String title, String message)
+    {
+        AlertDialog.Builder builder=  new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
+    }
+
+
 }

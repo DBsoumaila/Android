@@ -47,7 +47,7 @@
                 android:id="@+id/mailbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:hint="@string/monmail_gmail_com"
 
                 android:inputType="textEmailAddress" />
         </LinearLayout>
@@ -70,7 +70,7 @@
                 android:id="@+id/editTextTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:hint="password"
 
                 android:inputType="textPassword" />
 

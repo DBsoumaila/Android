@@ -12,7 +12,13 @@
 
         <activity android:name=".SignUp"/>
         <activity android:name=".Login"/>
+        <activity android:name=".BarChartActivity"/>
+        <activity android:name=".PieChartActivity"/>
+        <activity android:name=".RadarChartActivity"/>
+
         <activity android:name=".MainActivity">
+
+
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
