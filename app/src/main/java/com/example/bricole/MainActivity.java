@@ -77,11 +77,19 @@ public class MainActivity extends AppCompatActivity {
                afficherRadrChartAdmin();
                 return true;
 
+            case R.id.ajouter_travailleur:
+                creerTravailleur();
+                return true;
+
             default:
                 // the action is not handle
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    private void creerTravailleur() {
+        startActivity(new Intent(getApplicationContext(),TravailleurLogin.class));
     }
 
 
