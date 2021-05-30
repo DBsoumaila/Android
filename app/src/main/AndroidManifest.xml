@@ -11,14 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bricole">
-        <activity android:name=".TravailleurProfil"></activity>
-        <activity android:name=".TravailleurSignUp" />
-        <activity android:name=".TravailleurLogin" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".Login" />
-        <activity android:name=".BarChartActivity" />
-        <activity android:name=".PieChartActivity" />
-        <activity android:name=".RadarChartActivity" />
+        <activity android:name=".Client_profile"></activity>
+        <activity android:name=".ClientLogin" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ClientListViewItem" />
+        <activity android:name=".TravailleurEditProfil" />
+        <activity android:name=".TravailleurProfil" />
+        <activity android:name=".TravailleurSignUp" />
+        <activity android:name=".TravailleurLogin" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".Login" />
+        <activity android:name=".BarChartActivity" />
+        <activity android:name=".PieChartActivity" />
+        <activity android:name=".RadarChartActivity" />
     </application>
 
 </manifest>

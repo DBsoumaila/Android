@@ -1,10 +1,8 @@
 package com.example.bricole;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,11 +10,17 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
@@ -25,33 +29,69 @@ import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class TravailleurSignUp extends AppCompatActivity {
+public class TravailleurSignUp extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
     //Declare Variables
-    EditText trName, trProffesion, trNum, trSignUpEmail, trSignUpPassword, trConfirmPassword;
+    EditText trName, trNum, trSignUpEmail, trSignUpPassword, trConfirmPassword;
+
+    //Profession choices
+    Spinner spinnerProfession;
+    ArrayAdapter<CharSequence> professionAdapter;
+    String professionSelected;
+
+    //Ville choices
+    Spinner spinnerVille;
+    ArrayAdapter<CharSequence> villeAdapter;
+    String villeSelected;
 
     TextView toTrLogin;
 
     Button btTrSignUp;
 
-    ImageView trCIN, trXXXX, trPicture;
+    ImageView trCIN, trCE, trPicture;
     static final int PICK_IMAGE = 1;
     Uri imageUri;
+
+    boolean picAdded, cinAdded, ceAdded;
 
     String activeImage;
 
     AwesomeValidation awesomeValidation;
 
-    TravailleurDBHelper travailleurDB;
+
+    static TravailleurDatabase travailleurDB;
+
+    //Stores the add image icon appearing in additional infos page
+    Bitmap addImgIcon;
 
 
+    /*@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_travailleur_sign_up);*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travailleur_sign_up);
 
+        //Initialize Spinners
+        spinnerProfession = findViewById(R.id.travailleur_profession);
+        professionAdapter = ArrayAdapter.createFromResource(this,
+                R.array.professions, android.R.layout.simple_spinner_item);
+        professionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerProfession.setAdapter(professionAdapter);
+        spinnerProfession.setOnItemSelectedListener(this);
+
+        spinnerVille = findViewById(R.id.travailleur_ville);
+        villeAdapter = ArrayAdapter.createFromResource(this,
+                R.array.cities, android.R.layout.simple_spinner_item);
+        villeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerVille.setAdapter(villeAdapter);
+        spinnerVille.setOnItemSelectedListener(this);
+
+        addImgIcon = BitmapFactory.decodeResource(getResources(), R.drawable.add_img_icon);
+
         //Initialize Variables
         trName = findViewById(R.id.travailleur_name);
-        trProffesion = findViewById(R.id.travailleur_profession);
         trNum = findViewById(R.id.travailleur_num);
         trSignUpEmail = findViewById(R.id.travailleur_signup_email);
         trSignUpPassword = findViewById(R.id.travailleur_signup_password);
@@ -62,11 +102,11 @@ public class TravailleurSignUp extends AppCompatActivity {
 
         btTrSignUp = findViewById(R.id.travailleur_signup_button);
         trCIN = findViewById(R.id.travailleur_cin);
-        trXXXX = findViewById(R.id.travailleur_xxx);
-
+        trCE = findViewById(R.id.travailleur_ce);
         trPicture = findViewById(R.id.travailleur_picture);
 
-        travailleurDB = new TravailleurDBHelper(this);
+        //travailleurDB = new TravailleurDB(this);
+        travailleurDB = new TravailleurDatabase(this);
 
         //Initialize validation style
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
@@ -75,13 +115,12 @@ public class TravailleurSignUp extends AppCompatActivity {
         awesomeValidation.addValidation(this, R.id.travailleur_name,
                 RegexTemplate.NOT_EMPTY, R.string.invalid_name);
 
-        //Add Validation for Job
-        awesomeValidation.addValidation(this, R.id.travailleur_profession,
-                RegexTemplate.NOT_EMPTY, R.string.invalid_profession);
 
         //Add Validation for Num
         awesomeValidation.addValidation(this, R.id.travailleur_num,
-                RegexTemplate.NOT_EMPTY, R.string.invalid_num);
+                ".{10,}", R.string.invalid_number);
+
+        //Validation Ville
 
         //Add Validation for Sign Up Email
         awesomeValidation.addValidation(this, R.id.travailleur_signup_email,
@@ -135,18 +174,18 @@ public class TravailleurSignUp extends AppCompatActivity {
             }
         });
 
-        //XXXX
-        trXXXX.setOnClickListener(new View.OnClickListener() {
+
+        trCE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                activeImage = "btTrXXXX";
+                activeImage = "btTrCE";
 
                 Intent gallery = new Intent();
                 gallery.setType("image/*");
                 gallery.setAction(Intent.ACTION_GET_CONTENT);
 
-                startActivityForResult(Intent.createChooser(gallery, "Select Your XXXX"), PICK_IMAGE);
+                startActivityForResult(Intent.createChooser(gallery, "Selectionez votre carte d'entrepreneur"), PICK_IMAGE);
             }
         });
 
@@ -155,42 +194,69 @@ public class TravailleurSignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Check Validation
-                if(awesomeValidation.validate()){
+                if(!picAdded){
+                    Toast.makeText(getApplicationContext(),
+                            "Ajoutez votre photo de profil", Toast.LENGTH_SHORT).show();
+                }
+
+                if(!cinAdded){
+                    Toast.makeText(getApplicationContext(),
+                            "Ajoutez votre carte d'identité", Toast.LENGTH_SHORT).show();
+                }
+
+                if(!ceAdded){
+                    Toast.makeText(getApplicationContext(),
+                            "Ajoutez votre carte d'entrepreneur", Toast.LENGTH_SHORT).show();
+                }
+
+                if(awesomeValidation.validate() & picAdded & cinAdded & ceAdded){
                         // On Validation Success
-                        Toast.makeText(getApplicationContext(),
-                                "Form Validate Successfully", Toast.LENGTH_SHORT).show();
+                        /*Toast.makeText(getApplicationContext(),
+                                "Form Validate Successfully", Toast.LENGTH_SHORT).show();*/
 
                         //Add User To Database
                         byte[] profilPic = imageViewToByte(trPicture);
                         String fullName = trName.getText().toString();
-                        String proffesion = trProffesion.getText().toString();
+                        String profession = professionSelected;
+                        String ville = villeSelected;
                         String num = trNum.getText().toString();
                         String signUpEmail = trSignUpEmail.getText().toString();
                         String signUpPassword = trSignUpPassword.getText().toString();
                         byte[] cin = imageViewToByte(trCIN);
-                        byte[] xxx = imageViewToByte(trXXXX);
+                        byte[] ce = imageViewToByte(trCE);
+
+                        byte[] addImageIcon = bitmapToByte(addImgIcon);
 
                         Boolean emailCheckResult = travailleurDB.checkTravailleurEmail(signUpEmail);
                         //If this Email doesn't exist then we can sign up using it
                         if(emailCheckResult == false){
 
-                            Boolean signUpResult = travailleurDB.insertData(profilPic,fullName, proffesion, num, signUpEmail, signUpPassword, cin, xxx);
+                            //Boolean signUpResult = travailleurDB.insertData(profilPic,fullName, proffesion, num, signUpEmail, signUpPassword, cin, ce);
+                            Boolean signUpResult = travailleurDB.insertData(profilPic,fullName, profession, num, ville, signUpEmail, signUpPassword, cin, ce,
+                                    "  ", addImageIcon, addImageIcon, addImageIcon, addImageIcon);
+
                             if(signUpResult == true){
+
                                 Toast.makeText(getApplicationContext(),
-                                        "Successful Sign Up", Toast.LENGTH_SHORT).show();
+                                        "Inscription réussite", Toast.LENGTH_SHORT).show();
+
+                                //Well registered go back to login
+                               startActivity(new Intent(getApplicationContext(),TravailleurLogin.class));
+
+
                             }else{
                                 Toast.makeText(getApplicationContext(),
-                                        "Failed Sign Up", Toast.LENGTH_SHORT).show();
+                                        "Inscription échouée", Toast.LENGTH_SHORT).show();
                             }
 
                         }else{
                             Toast.makeText(getApplicationContext(),
-                                    "Email already exists", Toast.LENGTH_SHORT).show();
+                                    "Email exist déjà", Toast.LENGTH_SHORT).show();
                         }
 
                 }else{
-                    Toast.makeText(getApplicationContext(),
-                            "Validation Failed", Toast.LENGTH_SHORT).show();
+                    /*Toast.makeText(getApplicationContext(),
+                            "Validation Failed", Toast.LENGTH_SHORT).show();*/
                 }
             }
         });
@@ -205,6 +271,37 @@ public class TravailleurSignUp extends AppCompatActivity {
         return byteArray;
     }
 
+    private byte[] bitmapToByte(Bitmap image){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        Log.i("Converting Bitmap","Success");
+        return byteArray;
+    }
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        switch (parent.getId()){
+
+            case R.id.travailleur_profession:
+                professionSelected = parent.getItemAtPosition(position).toString();
+                //Toast.makeText(parent.getContext(), professionSelected, Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.travailleur_ville:
+                villeSelected = parent.getItemAtPosition(position).toString();
+                //Toast.makeText(parent.getContext(), villeSelected, Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -218,17 +315,29 @@ public class TravailleurSignUp extends AppCompatActivity {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
                     trPicture.setImageBitmap(bitmap);
 
+                    picAdded = true;
+
                 }
                 if(activeImage.equals("btTrCIN")){
 
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                    trCIN.setImageBitmap(bitmap);
+
                     Toast.makeText(getApplicationContext(),
-                            "CIN ADDED SUCCESSFULLY", Toast.LENGTH_SHORT).show();
+                            "CIN ajoutée avec succés", Toast.LENGTH_SHORT).show();
+
+                    cinAdded = true;
 
                 }
-                if(activeImage.equals("btTrXXXX")){
+                if(activeImage.equals("btTrCE")){
+
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                    trCE.setImageBitmap(bitmap);
 
                     Toast.makeText(getApplicationContext(),
-                            "XXXX ADDED SUCCESSFULLY", Toast.LENGTH_SHORT).show();
+                            "Carte d'entrepreneur ajoutée avec succés", Toast.LENGTH_SHORT).show();
+
+                    ceAdded = true;
 
                 }
             } catch (IOException e) {

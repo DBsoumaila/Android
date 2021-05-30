@@ -1,4 +1,4 @@
-package com.example.bricole;
+package com.example.bricole.dbhelpers;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -43,11 +43,7 @@ public class TravailleurDBHelper extends SQLiteOpenHelper {
 
         long result = travailleurDB.insert("ouvriers", null, contentValues);
 
-        if(result == -1){
-            return false;
-        }else{
-            return true;
-        }
+        return result != -1;
     }
 
 
@@ -63,11 +59,7 @@ public class TravailleurDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase travailleurDB = this.getWritableDatabase();
         Cursor cursor = travailleurDB.rawQuery("select * from ouvriers where trEmail = ?", new String[]{trEmail});
 
-        if(cursor.getCount() > 0){
-            return true;
-        }else{
-            return false;
-        }
+        return cursor.getCount() > 0;
     }
 
     public Boolean checkTravailleurEmailPassword(String trEmail, String trPassword){
@@ -75,10 +67,6 @@ public class TravailleurDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase travailleurDB = this.getWritableDatabase();
         Cursor cursor = travailleurDB.rawQuery("select * from ouvriers where trEmail = ? and trPassword = ?", new String[]{trEmail, trPassword});
 
-        if(cursor.getCount() > 0){
-            return true;
-        }else{
-            return false;
-        }
+        return cursor.getCount() > 0;
     }
 }

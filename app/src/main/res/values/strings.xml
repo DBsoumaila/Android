@@ -26,12 +26,36 @@
     <string name="client">Client</string>
     <string name="admin">Admin</string>
     <string name="statistiques">Statistiques</string>
-    <string name="invalid_name">Please Enter A Valid Name</string>
-    <string name="invalid_profession">Please Enter A valid Job</string>
-    <string name="invalid_num">Please Enter A Valid Number</string>
-    <string name="invalid_singup_email">Please Enter A Valid Email</string>
-    <string name="invalid_singup_password">Enter Six Digit Password</string>
-    <string name="invalid_confirm_password">Password does not match</string>
-    <string name="invalid_login_email">Please Enter A Valid Email</string>
-    <string name="invalid_login_password">Please Enter A Six Digit Password</string>
+    <string name="invalid_name">Ajoutez votre nom</string>
+    <string name="invalid_number">Ajoutez un numéro valide :dix chiffres</string>
+    <string name="invalid_singup_email">Ajoutez une adresse valide</string>
+    <string name="invalid_singup_password">Entez Six caractères</string>
+    <string name="invalid_confirm_password">Les mots de passe ne se correspondent pas</string>
+    <string name="invalid_login_email">Ajoutez une adresse valide</string>
+    <string name="invalid_login_password">Entez Six caractères</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="professions">
+        <item>Plombier</item>
+        <item>Pro2</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+    <string-array name="cities">
+        <item>Marrakech</item>
+        <item>Rabat</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
+
 </resources>

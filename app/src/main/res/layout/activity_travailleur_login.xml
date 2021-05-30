@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".TravailleurLogin">
 
     <EditText
         android:id="@+id/travailleur_login_email"
@@ -45,7 +46,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_bg"
-        android:text="Login"
+        android:text="Se connecter"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +59,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Not a member yet ?"
+        android:text="Pas encore membre?"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintHorizontal_bias=".3"
         android:layout_marginTop="5dp"
@@ -72,7 +73,7 @@
         android:id="@+id/create_account_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create your account"
+        android:text=" Créez votre compte"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintHorizontal_bias=".85"
         android:layout_marginTop="5dp"

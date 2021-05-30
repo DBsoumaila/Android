@@ -52,7 +52,7 @@ Button loginbtn;
         if (verif)
         {
             // on redirige vers la page dashboard de création d'admin
-            Intent intent = new Intent(Login.this, MainActivity.class);
+            Intent intent = new Intent(Login.this, DashBoardAdmin.class);
             // on peut penser a faire passer des donnes ici, comme il est authentifié ou il a droit tel ou tel dans les activités a venir
             showMessage("Correct", " Bienvenu Admin !!");
 

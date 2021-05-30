@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="  Description"
+            android:drawableLeft="@drawable/description_icon" />
+
+        <TextView
+            android:id="@+id/add_img_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_below="@+id/description"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:text="Ajoutez des images de votre travail"
+            android:textSize="15dp"
+            android:textColor="@color/black"/>
+
+    <ImageView
+        android:id="@+id/add_img_icon1"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/add_img_text"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"
+        app:srcCompat="@drawable/add_img_icon" />
+
+    <ImageView
+        android:id="@+id/add_img_icon2"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/add_img_text"
+        android:layout_toRightOf="@+id/add_img_icon1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        app:srcCompat="@drawable/add_img_icon" />
+
+    <ImageView
+        android:id="@+id/add_img_icon3"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/add_img_icon1"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="60dp"
+        app:srcCompat="@drawable/add_img_icon" />
+
+    <ImageView
+        android:id="@+id/add_img_icon4"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/add_img_icon1"
+        android:layout_toRightOf="@+id/add_img_icon1"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="50dp"
+        app:srcCompat="@drawable/add_img_icon" />
+
+    <Button
+        android:id="@+id/update_add_infos"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Mettre à jour"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/add_img_icon4"
+        app:backgroundTint="#B0E0E6" />
+
+    <Button
+        android:id="@+id/a_to_home"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Acceuil"
+        android:layout_toRightOf="@+id/update_add_infos"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/add_img_icon4"
+        app:backgroundTint="#B0E0E6" />
+
+
+</RelativeLayout>

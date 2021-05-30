@@ -9,13 +9,13 @@
     <ImageView
         android:id="@+id/travailleur_picture"
         android:layout_width="144dp"
-        android:layout_height="136dp"
+        android:layout_height="126dp"
         app:layout_constraintVertical_bias=".02"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/profil" />
+        app:srcCompat="@drawable/profil_pic" />
 
     <EditText
         android:id="@+id/travailleur_name"
@@ -25,35 +25,64 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintHorizontal_bias=".5"
         android:background="@drawable/edit_text_bg"
-        android:hint="Full Name"
+        android:hint="Nom et Prénom"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/travailleur_picture"
         />
 
+    <!--
     <EditText
         android:id="@+id/travailleur_profession"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent=".8"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias=".5"
         android:background="@drawable/edit_text_bg"
-        android:hint="Profession"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/travailleur_name"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent=".8" /> -->
+
+
+    <Spinner
+        android:id="@+id/travailleur_profession"
+        android:layout_width="345dp"
+        android:layout_height="45dp"
+        android:background="@drawable/edit_text_bg"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
         android:paddingBottom="10dp"
         android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/travailleur_name"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/travailleur_name"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent=".8"
+     />
+
+    <!--
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="290dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.661"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.312" /> -->
 
     <EditText
         android:id="@+id/travailleur_num"
@@ -63,7 +92,7 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintHorizontal_bias=".5"
         android:background="@drawable/edit_text_bg"
-        android:hint="Mobile"
+        android:hint="Numéro de téléphone"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -72,6 +101,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/travailleur_profession"
+        />
+
+    <Spinner
+        android:id="@+id/travailleur_ville"
+        android:layout_width="345dp"
+        android:layout_height="45dp"
+        android:background="@drawable/edit_text_bg"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/travailleur_num"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent=".8"
         />
 
     <EditText
@@ -90,7 +136,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/travailleur_num"
+        app:layout_constraintTop_toBottomOf="@id/travailleur_ville"
         />
 
     <EditText
@@ -101,7 +147,7 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintHorizontal_bias=".5"
         android:background="@drawable/edit_text_bg"
-        android:hint="Password"
+        android:hint="Mot de passe"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -120,7 +166,7 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintHorizontal_bias=".5"
         android:background="@drawable/edit_text_bg"
-        android:hint="Confirm password"
+        android:hint="Confirmez mot de passe"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -144,10 +190,22 @@
         app:layout_constraintTop_toBottomOf="@id/travailleur_confirm_password"
         app:layout_constraintVertical_bias="0.1"
         app:layout_constraintWidth_percent="0.3"
-        app:srcCompat="@drawable/profil" />
+        app:srcCompat="@drawable/id_card" />
+
+    <TextView
+        android:id="@+id/cin_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CIN"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias=".7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/travailleur_cin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/travailleur_cin"/>
 
     <ImageView
-        android:id="@+id/travailleur_xxx"
+        android:id="@+id/travailleur_ce"
         android:layout_width="117dp"
         android:layout_height="59dp"
         android:layout_marginTop="5dp"
@@ -158,8 +216,19 @@
         app:layout_constraintTop_toBottomOf="@id/travailleur_confirm_password"
         app:layout_constraintVertical_bias="0.1"
         app:layout_constraintWidth_percent="0.3"
-        app:srcCompat="@drawable/profil" />
+        app:srcCompat="@drawable/id_card" />
 
+    <TextView
+        android:id="@+id/ce_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carte d'Entrepreneur"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="1.05"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/travailleur_ce"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/travailleur_ce"/>
 
     <Button
         android:id="@+id/travailleur_signup_button"
@@ -168,7 +237,7 @@
         app:layout_constraintWidth_percent=".8"
         app:layout_constraintVertical_bias=".7"
         android:layout_marginBottom="30dp"
-        android:text="Sing Up"
+        android:text="S'inscrire"
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/white"
@@ -176,7 +245,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/travailleur_xxx"
+        app:layout_constraintTop_toBottomOf="@+id/cin_text_view"
 
         />
 
@@ -184,7 +253,7 @@
         android:id="@+id/to_login_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go Back To Login"
+        android:text="Se connecter"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintHorizontal_bias=".6"
         android:layout_marginTop="5dp"
@@ -192,8 +261,6 @@
         app:layout_constraintEnd_toEndOf="@+id/travailleur_signup_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/travailleur_signup_button"/>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

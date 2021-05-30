@@ -55,7 +55,7 @@ public class AdminModel {
         this.email = email;
     }
     public AdminModel( String nom, String prenom, String password, String email) {
-        this.id = id;
+        //this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.password = password;

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashBoardAdmin"
+    android:stretchColumns="1,2,3,4,5"
+    android:layout_margin="8dp">
+<TextView
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:text="@string/dashboard_admins"
+    android:textStyle="bold"
+    android:textSize="30dp"
+    android:layout_margin="5dp"/>
+
+
+<TableRow android:layout_marginTop="10dp">
+
+
+
+    <TextView
+        android:text="ID"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:layout_column="1"
+        android:gravity="center"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:text="Nom"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:layout_column="2"
+        android:gravity="center"
+        />
+    <TextView
+        android:text="Prenom"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:layout_column="3"
+        android:gravity="center"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:text="Password"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:layout_column="4"
+        android:gravity="center"
+        />
+    <TextView
+        android:text="Email"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:layout_column="5"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+</TableRow>
+
+<androidx.recyclerview.widget.RecyclerView
+
+    android:id="@+id/recycler_dashboard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    />
+
+
+</TableLayout>
+
