@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ClientListViewRow">
+
+    <ImageView
+        android:id="@+id/clt_tr_pic"
+        android:layout_width="80dp"
+        android:layout_height="90dp"
+        android:src="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/clt_tr_name"
+        android:layout_toRightOf="@+id/clt_tr_pic"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:text="Full Name" />
+
+    <TextView
+        android:id="@+id/clt_tr_profession"
+        android:layout_toRightOf="@+id/clt_tr_pic"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/clt_tr_name"
+        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+        android:text="Profession" />
+
+    <Button
+        android:id="@+id/voir_profil_tr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/clt_tr_profession"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/clt_tr_pic"
+        android:layout_weight="1"
+        android:text="Voir Profile" />
+
+    <Button
+        android:id="@+id/appeler_tr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/clt_tr_profession"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/voir_profil_tr"
+        android:layout_weight="1"
+        android:text="Appeler" />
+
+</RelativeLayout>

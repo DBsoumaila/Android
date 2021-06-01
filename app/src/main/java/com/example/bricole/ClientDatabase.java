@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.List;
+
 public class ClientDatabase extends SQLiteOpenHelper
 {
     public static final String TABLE_NAME= "client";
@@ -58,20 +60,47 @@ public class ClientDatabase extends SQLiteOpenHelper
 
     }
 
-    public Cursor getAllClients()
+    public List<ClientModel> getAllClients()
     {
+        List<ClientModel> clients = null;
         //creation d'une instance de la bd
         SQLiteDatabase DB  = this.getWritableDatabase();
-        Cursor result= DB.rawQuery(" select * from "+TABLE_NAME, null);
-        return result;
+        Cursor cursor= DB.rawQuery(" select * from "+TABLE_NAME, null);
+        while(cursor.moveToNext())
+        {
+            int Clid = Integer.parseInt(cursor.getString(0));
+            String ClNomComplet = cursor.getString(1);
+            String ClNumTel = cursor.getString(2);
+            String ClAdress = cursor.getString(3);
+            String ClVille = cursor.getString(4);
+            String ClEmail = cursor.getString(5);
+            String ClPassword = cursor.getString(6);
+            ClientModel result = new ClientModel(Clid, ClNomComplet, ClNumTel, ClAdress, ClVille, ClEmail, ClPassword);
+            clients.add(result);
+        }
+
+        return clients;
     }
 
-    public Cursor getCurrentClient(String email)
+    public ClientModel getCurrentClient(String email)
     {
+        ClientModel result = null;
         //creation d'une instance de la bd
         SQLiteDatabase DB  = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("select * from worker where ClEmail = ?", new String[]{email});
-        return cursor;
+        Cursor cursor = DB.rawQuery("select * from client where ClEmail = ?", new String[]{email});
+        while(cursor.moveToNext())
+        {
+            int Clid = Integer.parseInt(cursor.getString(0));
+            String ClNomComplet = cursor.getString(1);
+            String ClNumTel = cursor.getString(2);
+            String ClAdress = cursor.getString(3);
+            String ClVille = cursor.getString(4);
+            String ClEmail = cursor.getString(5);
+            String ClPassword = cursor.getString(6);
+            result = new ClientModel(Clid, ClNomComplet, ClNumTel, ClAdress, ClVille, ClEmail, ClPassword);
+            break;
+        }
+        return result;
     }
 
     public boolean update(ClientModel client)
@@ -93,8 +122,8 @@ public class ClientDatabase extends SQLiteOpenHelper
 
     public Boolean checkClientEmail(String clEmail){
 
-        SQLiteDatabase workerDB = this.getWritableDatabase();
-        Cursor cursor = workerDB.rawQuery("select * from client where ClEmail = ?", new String[]{clEmail});
+        SQLiteDatabase clientDB = this.getWritableDatabase();
+        Cursor cursor = clientDB.rawQuery("select * from client where ClEmail = ?", new String[]{clEmail});
 
         if(cursor.getCount() > 0){
             return true;
@@ -105,8 +134,8 @@ public class ClientDatabase extends SQLiteOpenHelper
 
     public Boolean checkClientEmailPassword(String clEmail, String clPassword){
 
-        SQLiteDatabase workerDB = this.getWritableDatabase();
-        Cursor cursor = workerDB.rawQuery("select * from worker where ClEmail = ? and ClPassword = ?", new String[]{clEmail, clPassword});
+        SQLiteDatabase clientDB = this.getWritableDatabase();
+        Cursor cursor = clientDB.rawQuery("select * from client where ClEmail = ? and ClPassword = ?", new String[]{clEmail, clPassword});
 
         if(cursor.getCount() > 0){
             return true;

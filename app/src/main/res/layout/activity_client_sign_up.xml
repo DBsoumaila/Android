@@ -1,77 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ClientSignUpActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="110dp">
+        tools:layout_editor_absoluteX="263dp"
+        tools:layout_editor_absoluteY="135dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="S'inscrire"
+            android:textSize="30sp" />
 
         <EditText
-            android:id="@+id/ClientSignUpEmail"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/client_signup_email"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="Email"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/editTextTextPassword2"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nom"
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/client_signup_password"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:ems="10"
-            android:hint="Prenom"
+            android:hint="Mot de passe"
+            android:inputType="textPersonName"
+            android:password="true" />
+
+        <EditText
+            android:id="@+id/client_confirm_password"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Confirmer Mot de Passe"
+            android:inputType="textPersonName"
+            android:password="true" />
+
+        <EditText
+            android:id="@+id/client_name"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Nom Complet"
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/client_num"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="N° de Téléphone"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/client_adress"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="Adresse"
             android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName5"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="N° Téléphone"
-            android:inputType="textPersonName" />
-
         <Spinner
-            android:layout_width="150dp"
+            android:id="@+id/client_ville"
+            android:layout_width="300dp"
             android:layout_height="50dp" />
 
         <Button
-            android:id="@+id/button_Inscription"
+            android:id="@+id/client_signup_button"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Inscription"
-            app:backgroundTint="#4CAF50" />
-
+            android:layout_height="50dp"
+            android:text="S'inscrire" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

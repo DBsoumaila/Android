@@ -1,6 +1,7 @@
 package com.example.bricole;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -28,6 +29,7 @@ import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class TravailleurSignUp extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
     //Declare Variables
@@ -243,6 +245,9 @@ public class TravailleurSignUp extends AppCompatActivity  implements AdapterView
                                 //Well registered go back to login
                                startActivity(new Intent(getApplicationContext(),TravailleurLogin.class));
 
+                               //Fulfill Workers List in client view
+                               //ClientListView.travailleursList = getTrList();
+
 
                             }else{
                                 Toast.makeText(getApplicationContext(),
@@ -293,9 +298,6 @@ public class TravailleurSignUp extends AppCompatActivity  implements AdapterView
                 //Toast.makeText(parent.getContext(), villeSelected, Toast.LENGTH_SHORT).show();
                 break;
         }
-
-
-
     }
 
     @Override
@@ -344,5 +346,31 @@ public class TravailleurSignUp extends AppCompatActivity  implements AdapterView
                 e.printStackTrace();
             }
         }
+    }
+
+    //Get workers info needed in ClientListView
+    static ArrayList<ClientViewTrInfos> getTrList()
+    {
+        Cursor result= travailleurDB.getAllWorkers();
+        ArrayList<ClientViewTrInfos> trListe= new ArrayList<ClientViewTrInfos>();
+
+        if(result.getCount()==0)
+        {
+            Log.i("Erreur ","Impossible de voir les utilisateurs. Aucun user trouvé!");
+        }else{
+
+            String fullName, profession;
+            byte[] profil_pic;
+            while (result.moveToNext())
+            {
+                profil_pic = result.getBlob(1);
+                fullName = result.getString(2);
+                profession = result.getString(3);
+
+                // Ajout des valeurs de la ligne dans la liste
+                trListe.add(new ClientViewTrInfos(profil_pic, fullName, profession));
+            }
+        }
+        return trListe;
     }
 }

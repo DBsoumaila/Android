@@ -4,6 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Client_profile">
+    tools:context=".ClientProfile">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="209dp"
+        tools:layout_editor_absoluteY="122dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Modifier le Profil"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/client_email_update"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/client_password_update"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPersonName"
+            android:password="true" />
+
+        <EditText
+            android:id="@+id/client_name_update"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nom Complet"
+            android:inputType="textPersonName"
+            android:password="false" />
+
+        <EditText
+            android:id="@+id/client_num_update"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="N° Téléphone"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/client_adress_update"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Adresse"
+            android:inputType="textPersonName" />
+
+        <Spinner
+            android:id="@+id/client_ville_update"
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
+
+        <Button
+            android:id="@+id/update_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Modifier" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

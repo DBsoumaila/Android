@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ClientSpinnerFilters">
+
+    <Spinner
+        android:layout_height="45dp"
+        android:layout_width="345dp"
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/travailleur_num"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:background="@drawable/edit_text_bg"
+        android:layout_marginBottom="364dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/filter_profession"/>
+
+    <Spinner android:layout_height="45dp"
+        android:layout_width="345dp"
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/travailleur_num"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:background="@drawable/edit_text_bg"
+        android:layout_marginBottom="444dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/filter_ville"/>
+
+    <Button
+        android:id="@+id/recherche"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/filter_profession"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Rechercher"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@ public class ClientModel
     private String adresse;
     private String ville;
 
-    public ClientModel(int id, String email, String password, String nomComplet, String numTel, String adresse, String ville) {
+    public ClientModel(int id, String nomComplet,  String numTel, String adresse, String ville, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -20,7 +20,7 @@ public class ClientModel
         this.ville = ville;
     }
 
-    public ClientModel(String email, String password, String nomComplet, String numTel, String adresse, String ville) {
+    public ClientModel(String nomComplet,  String numTel, String adresse, String ville, String email, String password) {
         this.email = email;
         this.password = password;
         this.nomComplet = nomComplet;

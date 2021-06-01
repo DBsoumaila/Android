@@ -105,7 +105,7 @@ public class FragmentAdditionalInfos extends Fragment {
                 gallery.setType("image/*");
                 gallery.setAction(Intent.ACTION_GET_CONTENT);
 
-                startActivityForResult(Intent.createChooser(gallery, "Select Image"), PICK_IMAGE);
+                startActivityForResult(Intent.createChooser(gallery, "Choisissez une image"), PICK_IMAGE);
 
             }
         });
@@ -117,11 +117,11 @@ public class FragmentAdditionalInfos extends Fragment {
 
                 //Show delete message confirm dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Delete");
-                builder.setMessage("Are you sure to delete this image ?");
+                builder.setTitle("Supprimer");
+                builder.setMessage("êtes vous sur ?");
 
                 //Delete Button
-                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Supprimer", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -132,13 +132,13 @@ public class FragmentAdditionalInfos extends Fragment {
                         Boolean result = updateDb();
                         if(result){
                             Toast.makeText(getContext(),
-                                    "Image Deleted", Toast.LENGTH_SHORT).show();
+                                    "Image suprimée", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 
                 //Cancel delete button
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Dismis dialog

@@ -101,7 +101,7 @@ public class TravailleurEditProfil extends AppCompatActivity {
             }
         });
 
-        //Update CIN
+        //Update CE
         ce_pic.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

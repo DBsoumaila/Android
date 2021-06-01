@@ -38,23 +38,25 @@
 
     <string-array name="professions">
         <item>Plombier</item>
-        <item>Pro2</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+        <item>Menuisier</item>
+        <item>Jardinier</item>
+        <item>infirmière</item>
+        <item>Femme de ménage</item>
+        <item>Chauffeur</item>
+        <item>Mécanicien</item>
     </string-array>
+
     <string-array name="cities">
         <item>Marrakech</item>
         <item>Rabat</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+        <item>Casablanca</item>
+        <item>Agadir</item>
+        <item>Fes</item>
+        <item>Meknes</item>
+        <item>El-jadida</item>
+        <item>Essaouira</item>
+        <item>Ouarzazat</item>
+        <item>Ifrane</item>
     </string-array>
 
 

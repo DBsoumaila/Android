@@ -16,19 +16,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToAdmin(View v)
     {
-        Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(getApplicationContext(), Login.class);
         startActivity(intent);
     }
 
     public void goToTravailleur(View v)
     {
-        Intent intent = new Intent(this, TravailleurLogin.class);
+        Intent intent = new Intent(getApplicationContext(), TravailleurLogin.class);
         startActivity(intent);
     }
 
     public void goToClient(View v)
     {
-        Intent intent = new Intent(this, ClientLogin.class);
+        Intent intent = new Intent(getApplicationContext(), ClientLogin.class);
         startActivity(intent);
     }
 }

@@ -4,6 +4,12 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bricole">
-        <activity android:name=".Client_profile"></activity>
+        <activity android:name=".ClientTrProfileView"></activity>
+        <activity android:name=".ClientSpinnerFilters" />
+        <activity android:name=".ClientListViewRow" />
+        <activity android:name=".ClientListView" />
+        <activity android:name=".ClientHome" />
+        <activity android:name=".ClientSignUp" />
+        <activity android:name=".ClientProfile" />
         <activity android:name=".ClientLogin" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -19,8 +31,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ClientListViewItem" />
+        </activity> <!-- <activity android:name=".ClientListViewItem" /> -->
         <activity android:name=".TravailleurEditProfil" />
         <activity android:name=".TravailleurProfil" />
         <activity android:name=".TravailleurSignUp" />
@@ -30,6 +41,7 @@
         <activity android:name=".BarChartActivity" />
         <activity android:name=".PieChartActivity" />
         <activity android:name=".RadarChartActivity" />
+        <activity android:name=".DashBoardAdmin" />
     </application>
 
 </manifest>

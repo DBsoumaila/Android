@@ -18,29 +18,6 @@
             android:background="#B0E0E6"
             android:padding="20dp">
 
-            <TextView
-                android:id="@+id/scroll_Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="305dp"
-                android:textColor="@color/black"
-                android:textSize="10dp"
-                android:text="You can scroll" />
-
-            <ImageView
-                android:id="@+id/fleche_droite"
-                android:layout_width="30dp"
-                android:layout_height="64dp"
-                android:layout_marginLeft="350dp"
-                app:srcCompat="@drawable/fleche" />
-
-            <ImageView
-                android:id="@+id/fleche_gauche"
-                android:layout_width="30dp"
-                android:layout_height="64dp"
-                android:layout_marginLeft="300dp"
-                app:srcCompat="@drawable/flechegauche" />
-
 
             <ImageView
                 android:id="@+id/travailleur_edit_pic"

@@ -36,53 +36,6 @@
         app:layout_constraintTop_toBottomOf="@id/travailleur_picture"
         />
 
-    <!--
-    <EditText
-        android:id="@+id/travailleur_profession"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/travailleur_name"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintWidth_percent=".8" /> -->
-
-
-    <Spinner
-        android:id="@+id/travailleur_profession"
-        android:layout_width="345dp"
-        android:layout_height="45dp"
-        android:background="@drawable/edit_text_bg"
-        android:paddingLeft="20dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/travailleur_name"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintWidth_percent=".8"
-     />
-
-    <!--
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.661"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.312" /> -->
 
     <EditText
         android:id="@+id/travailleur_num"
@@ -100,25 +53,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/travailleur_profession"
+        app:layout_constraintTop_toBottomOf="@id/travailleur_name"
         />
 
-    <Spinner
-        android:id="@+id/travailleur_ville"
-        android:layout_width="345dp"
-        android:layout_height="45dp"
-        android:background="@drawable/edit_text_bg"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/travailleur_num"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintWidth_percent=".8"
-        />
 
     <EditText
         android:id="@+id/travailleur_signup_email"
@@ -136,7 +73,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/travailleur_ville"
+        app:layout_constraintTop_toBottomOf="@id/travailleur_num"
         />
 
     <EditText
@@ -177,6 +114,39 @@
         app:layout_constraintTop_toBottomOf="@id/travailleur_signup_password"
         />
 
+    <Spinner
+        android:id="@+id/travailleur_profession"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/travailleur_confirm_password"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent=".8"
+        />
+
+    <Spinner
+        android:id="@+id/travailleur_ville"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/travailleur_profession"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent=".8"
+        />
 
     <ImageView
         android:id="@+id/travailleur_cin"
@@ -187,7 +157,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/travailleur_confirm_password"
+        app:layout_constraintTop_toBottomOf="@id/travailleur_ville"
         app:layout_constraintVertical_bias="0.1"
         app:layout_constraintWidth_percent="0.3"
         app:srcCompat="@drawable/id_card" />
@@ -213,7 +183,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/travailleur_confirm_password"
+        app:layout_constraintTop_toBottomOf="@id/travailleur_ville"
         app:layout_constraintVertical_bias="0.1"
         app:layout_constraintWidth_percent="0.3"
         app:srcCompat="@drawable/id_card" />

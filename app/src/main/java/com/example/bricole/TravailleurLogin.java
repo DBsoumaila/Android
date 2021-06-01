@@ -93,7 +93,7 @@ public class TravailleurLogin extends AppCompatActivity {
 
                         //Cursor cursor = travailleurDB.getAllWorkers();
 
-                        allWorkers = getTrList();
+                        allWorkers = (new TravailleurDatabase(getApplicationContext())).getTrList();
 
                         for ( int i = 0; i < allWorkers.size(); i++){
 
@@ -107,11 +107,11 @@ public class TravailleurLogin extends AppCompatActivity {
                         }
 
                         //What the worker should visualize
-                        Toast.makeText(getApplicationContext(),
-                                "Great You're in the right page", Toast.LENGTH_SHORT).show();
+                        /*Toast.makeText(getApplicationContext(),
+                                "Great You're in the right page", Toast.LENGTH_SHORT).show();*/
                     }else{
                         Toast.makeText(getApplicationContext(),
-                                "Invalid Crediantials.", Toast.LENGTH_SHORT).show();
+                                "Ce compte n'existe pas.", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -149,47 +149,6 @@ public class TravailleurLogin extends AppCompatActivity {
         }
         return trListe;
     }*/
-
-    //List of all workers infos
-    private List<TravailleurModel> getTrList()
-    {
-        Cursor result= travailleurDB.getAllWorkers();
-        List<TravailleurModel> trListe= new ArrayList<TravailleurModel>();
-
-        if(result.getCount()==0)
-        {
-            Log.i("Erreur ","Impossible de voir les utilisateurs. Aucun user trouvé!");
-        }else{
-            int idRecu;
-            String fullName, num, email, password, description;
-            String profession, ville;
-            byte[] profil_pic, cin, ce, workImg1, workImg2, workImg3, workImg4;
-            while (result.moveToNext())
-            {
-                idRecu=Integer.parseInt(result.getString(0));
-                profil_pic = result.getBlob(1);
-                fullName = result.getString(2);
-                profession = result.getString(3);
-                num = result.getString(4);
-                ville = result.getString(5);
-                email = result.getString(6);
-                password = result.getString(7);
-                cin = result.getBlob(8);
-                ce = result.getBlob(9);
-
-                description = result.getString(10);
-                workImg1 = result.getBlob(11);
-                workImg2 = result.getBlob(12);
-                workImg3 = result.getBlob(13);
-                workImg4 = result.getBlob(14);
-
-                // Ajout des valeurs de la ligne dans la liste
-                trListe.add(new TravailleurModel(idRecu,profil_pic ,fullName,profession,num, ville, email,password,cin,ce,
-                        description, workImg1, workImg2, workImg3, workImg4));
-            }
-        }
-        return trListe;
-    }
 
     //Get Data From Cursor
     /*

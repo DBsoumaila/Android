@@ -51,7 +51,7 @@ public class TravailleurProfil extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getApplicationContext(),TravailleurLogin.class));
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
     }

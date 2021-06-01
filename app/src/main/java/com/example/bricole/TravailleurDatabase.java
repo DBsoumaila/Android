@@ -5,9 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TravailleurDatabase extends SQLiteOpenHelper {
 
@@ -31,6 +35,8 @@ public class TravailleurDatabase extends SQLiteOpenHelper {
     public static final String col_13="trWorkImage2";
     public static final String col_14="trWorkImage3";
     public static final String col_15="trWorkImage4";
+
+    List<TravailleurModel> trListe = new ArrayList<TravailleurModel>();
 
     public TravailleurDatabase( Context context) {
         super(context, "worker.db", null, 1);
@@ -148,5 +154,42 @@ public class TravailleurDatabase extends SQLiteOpenHelper {
         }else{
             return false;
         }
+    }
+
+    public List<TravailleurModel> getTrList() {
+        Cursor result = getAllWorkers();
+        //List<TravailleurModel> trListe = new ArrayList<TravailleurModel>();
+
+        if (result.getCount() == 0) {
+            Log.i("Erreur ", "Impossible de voir les utilisateurs. Aucun user trouvé!");
+        } else {
+            int idRecu;
+            String fullName, num, email, password, description;
+            String profession, ville;
+            byte[] profil_pic, cin, ce, workImg1, workImg2, workImg3, workImg4;
+            while (result.moveToNext()) {
+                idRecu = Integer.parseInt(result.getString(0));
+                profil_pic = result.getBlob(1);
+                fullName = result.getString(2);
+                profession = result.getString(3);
+                num = result.getString(4);
+                ville = result.getString(5);
+                email = result.getString(6);
+                password = result.getString(7);
+                cin = result.getBlob(8);
+                ce = result.getBlob(9);
+
+                description = result.getString(10);
+                workImg1 = result.getBlob(11);
+                workImg2 = result.getBlob(12);
+                workImg3 = result.getBlob(13);
+                workImg4 = result.getBlob(14);
+
+                // Ajout des valeurs de la ligne dans la liste
+                trListe.add(new TravailleurModel(idRecu, profil_pic, fullName, profession, num, ville, email, password, cin, ce,
+                        description, workImg1, workImg2, workImg3, workImg4));
+            }
+        }
+        return trListe;
     }
 }
